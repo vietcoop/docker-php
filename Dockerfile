@@ -136,6 +136,6 @@ COPY --from=build_modules /usr/local/lib /usr/local/lib
 # Test nginx config.
 RUN nginx -t
 EXPOSE 80
-RUN chmod a+x /start.sh
+RUN chmod a+x /start.bash
 STOPSIGNAL SIGTERM
-CMD ["/start.sh"]
+CMD ["/start.bash"]
