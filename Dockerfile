@@ -62,18 +62,8 @@ RUN set -xe \
         gettext-libs \
         icu-libs \
         lame \
-        libpng \
-        libxslt \
-        libmcrypt \
-        libass \
-        librtmp \
-        libssl1.1 \
-        libvpx \
-        libevent \
-        libtheora \
-        libvorbis \
+        libpng libxslt libmcrypt libass librtmp libssl1.1 libvpx libevent libtheora libvorbis \
         nginx \
-        nginx-mod-http-headers-more \
         openssl-dev \
         opus \
         pcre-dev \
@@ -81,6 +71,7 @@ RUN set -xe \
         x264-libs \
         x265-dev \
         sqlite-libs \
+        supervisor \
     \
     && apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
@@ -96,7 +87,6 @@ RUN set -xe \
         libedit-dev \
         libevent-dev \
         libressl-dev \
-        librdkafka-dev \
         libxml2-dev \
         libpng-dev \
         libmcrypt-dev \
