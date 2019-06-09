@@ -117,18 +117,9 @@ RUN set -xe \
     && cd /tmp \
     && mkdir -p /usr/src/php/ext \
     && apk del .build-deps \
-    && mkdir -p /etc/nginx \
-    && mkdir -p /run/nginx \
-    && rm -Rf /etc/nginx/nginx.conf \
-    && mkdir -p /etc/nginx/sites-available/ \
-    && mkdir -p /etc/nginx/sites-enabled/ \
-    && mkdir -p /app/public/ \
-    && ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf \
     && rm -Rf /usr/local/etc/php-fpm.d/zz-docker.conf \
     && sed -i 's!access.log!; access.log!g' /usr/local/etc/php-fpm.d/docker.conf \
-    && rm -rf /tmp/* \
-    && mkdir -p /tmp/nginx \
-    && chown -R www-data /tmp/nginx
+    && rm -rf /tmp/*
 
 COPY rootfs /
 COPY --from=build_modules /usr/local/lib /usr/local/lib
