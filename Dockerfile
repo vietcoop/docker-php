@@ -45,7 +45,7 @@ RUN \
     && ls -l /usr/local/lib \
     && ls -l $HOME/nginx/objs
 
-FROM php:7.2-fpm-alpine
+FROM php:7.3-fpm-alpine
 
 RUN set -xe \
     && get_latest_release() { \
@@ -80,12 +80,7 @@ RUN set -xe \
         gettext-dev \
         zlib-dev \
         icu-dev \
-        libedit-dev \
-        libevent-dev \
-        libressl-dev \
-        libxml2-dev \
-        libpng-dev \
-        libmcrypt-dev \
+        libedit-dev libevent-dev libressl-dev libxml2-dev libpng-dev libmcrypt-dev \
         libxslt-dev \
         sqlite-dev \
 	&& export CFLAGS="$PHP_CFLAGS" \
@@ -98,13 +93,9 @@ RUN set -xe \
         gd \
         gettext \
         intl \
-        mysqli \
-        pdo_mysql \
-        pdo_sqlite \
-        soap \
-        sockets \
+        mysqli pdo_mysql pdo_sqlite \
+        soap sockets \
         xsl \
-        zip \
         opcache \
     && pecl install -o mcrypt-snapshot redis apcu \
     && docker-php-ext-enable mcrypt redis apcu \
