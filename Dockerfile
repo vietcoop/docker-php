@@ -63,6 +63,7 @@ RUN set -xe \
         openssl-dev \
         opus \
         pcre-dev \
+	postgresql-libs \
         protobuf-dev \
         x264-libs \
         x265-dev \
@@ -82,6 +83,7 @@ RUN set -xe \
         icu-dev \
         libedit-dev libevent-dev libressl-dev libxml2-dev libpng-dev libmcrypt-dev \
         libxslt-dev \
+	postgresql-dev \
         sqlite-dev \
 	&& export CFLAGS="$PHP_CFLAGS" \
         CPPFLAGS="$PHP_CPPFLAGS" \
@@ -93,7 +95,7 @@ RUN set -xe \
         gd \
         gettext \
         intl \
-        mysqli pdo_mysql pdo_sqlite \
+        mysqli pgsql pdo_mysql pdo_pgsql pdo_sqlite \
         soap sockets \
         xsl \
         opcache \
