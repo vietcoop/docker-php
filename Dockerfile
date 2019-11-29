@@ -1,5 +1,5 @@
 FROM vietcoop/nginx:latest AS build_modules
-FROM php:7.3-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 RUN set -xe \
     && get_latest_release() { \
