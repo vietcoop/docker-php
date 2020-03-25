@@ -9,4 +9,4 @@ if [ -f /app/resources/docker/hook-start ]; then
     source /app/resources/docker/hook-start
 fi
 
-/usr/bin/supervisord -n -c /etc/supervisord.conf
+exec docker-php-entrypoint "$@"
