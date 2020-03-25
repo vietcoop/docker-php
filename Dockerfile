@@ -1,10 +1,14 @@
 FROM vietcoop/nginx:latest AS build_modules
 FROM php:7.3-fpm-alpine
 
+ARG S6_VERSION=1.22.1.0
 RUN set -xe \
     && get_latest_release() { \
         wget -qO- "https://api.github.com/repos/$1/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'; \
     } \
+    && curl -LkSso /tmp/s6-overlay-amd64.tar.gz https://github.com/just-containers/s6-overlay/releases/download/v${S6_VERSION}/s6-overlay-amd64.tar.gz \
+    && tar xzf /tmp/s6-overlay-amd64.tar.gz -C / \
+    && rm /tmp/s6-overlay-amd64.tar.gz \
     && apk add --no-cache bash \
         bzip2 \
         curl-dev \
@@ -22,7 +26,6 @@ RUN set -xe \
         x264-libs \
         x265-dev \
         sqlite-libs \
-        supervisor \
     \
     && apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
@@ -72,4 +75,4 @@ RUN nginx -t
 EXPOSE 80
 RUN chmod a+x /start.bash
 STOPSIGNAL SIGTERM
-CMD ["/start.bash"]
+ENTRYPOINT ["/start.bash", "/init"]
