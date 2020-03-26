@@ -9,5 +9,5 @@ PHP-FPM [![](https://images.microbadger.com/badges/version/vietcoop/nginx.svg)](
 
     git clone git@github.com:vietcoop/docker-php.git
     cd docker-php
-    docker build -t vietcoop/php:latest .
-    docker push vietcoop/php:latest
+    docker build -t vietcoop/php:7.4.x .
+    docker push vietcoop/php:7.4.x
