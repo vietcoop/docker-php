@@ -1,7 +1,7 @@
 FROM vietcoop/nginx:latest AS build_modules
 FROM php:7.3-fpm-alpine
 
-ARG S6_VERSION=1.22.1.0
+ARG S6_VERSION=2.0.0.1
 RUN set -xe \
     && get_latest_release() { \
         wget -qO- "https://api.github.com/repos/$1/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'; \
